@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center border-bottom">
+      <h1 class="font-weight-bold">Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="../scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Latest Mars News</h2>
+      </div>
+    </div>
+  </br>
+    <div class="row">
+      <div class="col-md-12">
+        <h4>{{ mars_dict.title }}</h4>
+        <p>{{mars_dict.text}}</p>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 border">
+            <h2>Featured Mars Image</h2> 
+            </br>
+            <img class="img-fluid" src="{{mars_dict.image}}">
+        </div>
+        <div class="col-md-4">
+            <div class="border">
+            <h5>Mars Facts</h5>
+                {{ mars_dict.table | safe}} 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-4">
+        <h2 class="align-items-center">Mars Hemispheres</h2>  
+      </div>
+    </div>
+    </br>
+    <div class="row">        
+        {% for hemisphere in mars_dict.hemispheres %}  
+            <div class="col-6 border">
+              </br>
+                    <div>
+                      <img class="img-fluid" src="{{ hemisphere.img_url | safe }}">
+                    </div>
+
+                    <div>
+                      <h4> {{ hemisphere.title | safe}} </h4>  
+                    </div>
+            
+              </div>
+            {% endfor %}
+    </div> 
+  
+</body>
+
+</html>
+      
